@@ -1,0 +1,11 @@
+---
+build.dart --machine --full
+[{"method":"info","params":{"message":"Took 1.0s (0.3s awaiting secondary inputs)."}}]
+[{"method":"info","params":{"message":"Took 1.2s (0.4s awaiting secondary inputs)."}}]
+build.dart finished [5452 ms]
+
+---
+build.dart --machine --removed=web\clickcounter.dart --removed=web\clickcounter.html --removed=web\match_game.c...
+
+build.dart finished [2466 ms]
+
