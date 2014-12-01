@@ -3,23 +3,28 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>educ_memory_game</title>
-    <link rel="stylesheet" href="educ_memory_game.css">
+    <title>Match game</title>
+    <link rel="stylesheet" href="match_game.css">
   </head>
   <body>
     <h1>Match_game</h1>
       <h2>Directive:<p>
-      <h4> Bien venu da le jeu des allumettes. Les règle sont très simple, pour gagner vous devez soit enlever et/ou déplacer  une ou plusieurs allumette pour former le nombre de carré demandé à chaque question. Vous êtes prêt à commencer alors débutons!!! </h2>
+      <h4> Bienvenu dans le jeu des allumettes. Les regles sont très simples, pour gagner vous devez soit enlever et/ou déplacer  une ou plusieurs allumette pour former le nombre de carré demandé à chaque question. </h2>
        Jeu 1# - Enlève 2 allumettes pour obtenir 2 carrés :<h4> 
     <section>
-      <canvas id="canvas" width="650" height="352">
+      <canvas id="canvas" width="650" height="350">
       <img id ="match_vertical" src="images/match_vertical.png"></img>
       <img id ="match_horizontal" src="images/match_horizontal.png"></img>      
         Canvas is not supported in your browser.
-        
       </canvas>
     </section>
-
+    <section>
+    <p id="coordinates_0"></p>
+    <p id="coordinates_1"></p>
+    </section>
+    <section>
+      <button id="play">Jouer à nouveau</button>
+    </section>
     <script type="application/dart" src="match_game.dart"></script>
     <script src="packages/browser/dart.js"></script>
   </body>
