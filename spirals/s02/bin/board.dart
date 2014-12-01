@@ -17,15 +17,26 @@ class Board {
     context = canvas.getContext('2d');
     width = canvas.width;
     height = canvas.height;
-    matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"vertical")); 
-    matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"horizontal"));
+    matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"vertical"));
+    matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"vertical"));
+    matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"vertical"));
+    matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"vertical"));
     matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"vertical"));
     matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"vertical"));
     matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"horizontal"));
+    matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"horizontal"));
+    matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"horizontal"));
+    matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"horizontal"));
+    matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"horizontal"));
+    matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"horizontal"));
+    //querySelector('#canvas').onClick.listen(removematch);
     querySelector('#canvas').onMouseDown.listen(onMouseDown);
     querySelector('#coordinates_0').innerHtml="Coordonnnés:X=n/a , Y=n/a";
     querySelector('#coordinates_1').innerHtml="Coordonnnés dernier click:X=n/a , Y=n/a";
     querySelector('#canvas').onMouseMove.listen(onMouseMove);
+   
+    
+    
     window.animationFrame.then(gameLoop);
   }
 
@@ -65,21 +76,40 @@ class Board {
     context.fillText("("+x.toString()+","+y.toString()+")",x,y);
     // Display matches this code to be modified in future
     matchTest[0].draw(25,25);
-    matchTest[1].draw(25,125);
-    matchTest[2].draw(125,25);
-    matchTest[3].draw(125,125);
-    matchTest[4].draw(125,225);
+    matchTest[1].draw(125,25); 
+    matchTest[2].draw(225,25);
+    matchTest[3].draw(25,125);
+    matchTest[4].draw(125,125);
+    matchTest[5].draw(225,125);
+    matchTest[6].draw(25,25);
+    matchTest[7].draw(125,25);
+    matchTest[8].draw(25,125);
+    matchTest[9].draw(125,125);
+    matchTest[10].draw(25,225);
+    matchTest[11].draw(125,225);
+    
+
+   
   }
+  
+
   
   void draw() {
     clear();
     border();
   }
   
+ // void removematch(MouseEvent e) {
+    
+   // matchTest.onClick.listen((e) => matchTest.remove());
+    
+ // }
+  
   void onMouseDown(MouseEvent e) {
     int y = e.offset.y;
     int x = e.offset.x;
-    querySelector('#coordinates_1').innerHtml="Coordonnnés dernier click: X= "+ x.toString() + ", Y=" + y.toString(); 
+    querySelector('#coordinates_1').innerHtml="Coordonnnés dernier click: X= "+ x.toString() + ", Y=" + y.toString();
+   
   }
   
   void onMouseMove(MouseEvent e) {
@@ -88,5 +118,6 @@ class Board {
       querySelector('#coordinates_0').innerHtml="Coordonnés: X= "+ x.toString() + ", Y=" + y.toString();
       
     }
+
 }
 
