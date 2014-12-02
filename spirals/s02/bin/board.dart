@@ -10,32 +10,24 @@ class Board {
   int height;
   int lengthMatches;
   int widthMatches;
-  
-  var matchTest=new List();
+  Match activeMatch=null;
+  bool matchSelected=false;
+  List matchTest=new List();
 
   Board(this.canvas,this.lengthMatches,this.widthMatches) {
     context = canvas.getContext('2d');
     width = canvas.width;
     height = canvas.height;
-    matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"vertical"));
-    matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"vertical"));
-    matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"vertical"));
-    matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"vertical"));
-    matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"vertical"));
-    matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"vertical"));
-    matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"horizontal"));
-    matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"horizontal"));
-    matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"horizontal"));
-    matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"horizontal"));
-    matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"horizontal"));
-    matchTest.add(new Match(this, 1,1,lengthMatches,widthMatches,"horizontal"));
-    //querySelector('#canvas').onClick.listen(removematch);
+    matchTest.add(new Match(this, 25,25,lengthMatches,widthMatches,"vertical"));
+    matchTest.add(new Match(this, 25,125,lengthMatches,widthMatches,"horizontal"));
+    matchTest.add(new Match(this, 125,25,lengthMatches,widthMatches,"vertical"));
+    
     querySelector('#canvas').onMouseDown.listen(onMouseDown);
     querySelector('#coordinates_0').innerHtml="Coordonnnés:X=n/a , Y=n/a";
     querySelector('#coordinates_1').innerHtml="Coordonnnés dernier click:X=n/a , Y=n/a";
     querySelector('#canvas').onMouseMove.listen(onMouseMove);
+    window.onKeyPress.listen( onKey);
    
-    
     
     window.animationFrame.then(gameLoop);
   }
@@ -70,25 +62,14 @@ class Board {
     context.lineWidth = 1;
     context.strokeStyle = '#C3E8F7';
     context.stroke();
-    // code for update coordinates on canvas test only to be removed from final code
-    context.font = "bold 10px sans-serif";
-    context.fillStyle = "red";
-    context.fillText("("+x.toString()+","+y.toString()+")",x,y);
-    // Display matches this code to be modified in future
-    matchTest[0].draw(25,25);
-    matchTest[1].draw(125,25); 
-    matchTest[2].draw(225,25);
-    matchTest[3].draw(25,125);
-    matchTest[4].draw(125,125);
-    matchTest[5].draw(225,125);
-    matchTest[6].draw(25,25);
-    matchTest[7].draw(125,25);
-    matchTest[8].draw(25,125);
-    matchTest[9].draw(125,125);
-    matchTest[10].draw(25,225);
-    matchTest[11].draw(125,225);
-    
+   // code for update coordinates on canvas test only to be removed from final code
 
+    // Display matches this code to be modified in future
+    matchTest[0].draw(matchTest[0].posX,matchTest[0].posY);
+    matchTest[1].draw(matchTest[1].posX,matchTest[1].posY); 
+    matchTest[2].draw(matchTest[2].posX,matchTest[2].posY);
+
+   
    
   }
   
@@ -99,25 +80,48 @@ class Board {
     border();
   }
   
- // void removematch(MouseEvent e) {
-    
-   // matchTest.onClick.listen((e) => matchTest.remove());
-    
- // }
   
   void onMouseDown(MouseEvent e) {
     int y = e.offset.y;
     int x = e.offset.x;
-    querySelector('#coordinates_1').innerHtml="Coordonnnés dernier click: X= "+ x.toString() + ", Y=" + y.toString();
+    String textToDisplay="Aucun Allumette selectionné";
+    activeMatch=null;
+    //matchSelected=;
+    
+     for (int i=0; i< matchTest.length ;i++){
+            if (matchTest[i].intersects(x,y)==true){
+                activeMatch=matchTest[i];
+                textToDisplay="Allumette ${i+1} selectionné";
+            }      
+     }
+    
+    querySelector('#coordinates_1').innerHtml=textToDisplay;
    
   }
   
   void onMouseMove(MouseEvent e) {
       y = e.offset.y;
       x = e.offset.x;
+      
+      if (activeMatch!=null){
+        activeMatch.posX=x;
+        activeMatch.posY=y;
+      }
       querySelector('#coordinates_0').innerHtml="Coordonnés: X= "+ x.toString() + ", Y=" + y.toString();
       
     }
+  
+  void onKey(KeyboardEvent e){
+    //if (e.keyCode == KeyCode.SPACE) {
+          print('pressed space');
+    //}
 
+    if (activeMatch!=null){
+      activeMatch.rotate(); 
+     }
+  
+  }
+    
+  
 }
 
