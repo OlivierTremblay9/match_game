@@ -6,13 +6,23 @@ class Board {
   CanvasRenderingContext2D context;
   int x = 0;
   int y = 0;
+  int w = 0;
+  int h= 0;
+  num X = 0;
+  var MATCH_H = 10; 
+  var MATCH_W = 100;
   int width;
   int height;
   int lengthMatches;
   int widthMatches;
   Match activeMatch=null;
+  Match rightDown;
+  Match leftDown;
   bool matchSelected=false;
   List matchTest=new List();
+  Match match;
+  Timer timer;
+  
 
   Board(this.canvas,this.lengthMatches,this.widthMatches) {
     context = canvas.getContext('2d');
@@ -111,20 +121,37 @@ class Board {
       
     }
   
-  void onKey(KeyboardEvent e){
+  
+  void movekeyboard(KeyboardEvent e) {
    
-
-    
-    if (e.keyCode == KeyCode.SPACE) {
-          print('pressed space');
+    for (int i=0; i< matchTest.length ;i++){
+      if ((activeMatch!=null) && (rightDown != true)){
+            activeMatch.posX=x;
+            activeMatch.posY=y;
+            matchTest[i].posX= x + 5;
+      }  
+            else if ((activeMatch!=null) && (leftDown != true))
+              activeMatch.posX=x;
+              activeMatch.posY=y;
+              matchTest[i].posX= x - 5;
+ 
     }
+  }
+    
+  void onKey(KeyboardEvent e){
+     
+   // if (activeMatch!=null){
+     //  activeMatch.rotate(); 
+    //  }
+   //if (e.keyCode == KeyCode.SPACE) {
+      //    print('pressed space');
+   // }
 
-    if (activeMatch!=null){
-      activeMatch.rotate(); 
-     }
+ 
   
   }
     
   
+          
 }
 
