@@ -6,22 +6,15 @@ class Board {
   CanvasRenderingContext2D context;
   int x = 0;
   int y = 0;
-  int w = 0;
-  int h= 0;
-  num X = 0;
-  var MATCH_H = 10; 
-  var MATCH_W = 100;
   int width;
   int height;
   int lengthMatches;
   int widthMatches;
   Match activeMatch=null;
-  Match rightDown;
-  Match leftDown;
   bool matchSelected=false;
   List matchTest=new List();
-  Match match;
-  Timer timer;
+
+
   
 
   Board(this.canvas,this.lengthMatches,this.widthMatches) {
@@ -37,8 +30,6 @@ class Board {
     querySelector('#coordinates_1').innerHtml="Coordonnnés dernier click:X=n/a , Y=n/a";
     querySelector('#canvas').onMouseMove.listen(onMouseMove);
     window.onKeyPress.listen( onKey);
-   
-    
     window.animationFrame.then(gameLoop);
   }
 
@@ -122,36 +113,14 @@ class Board {
     }
   
   
-  void movekeyboard(KeyboardEvent e) {
-   
-    for (int i=0; i< matchTest.length ;i++){
-      if ((activeMatch!=null) && (rightDown != true)){
-            activeMatch.posX=x;
-            activeMatch.posY=y;
-            matchTest[i].posX= x + 5;
-      }  
-            else if ((activeMatch!=null) && (leftDown != true))
-              activeMatch.posX=x;
-              activeMatch.posY=y;
-              matchTest[i].posX= x - 5;
- 
-    }
-  }
     
   void onKey(KeyboardEvent e){
+      
+     if  ((activeMatch!=null)&&(e.keyCode == 32)) {
+          print('pressed space');
+          activeMatch.rotate();
+    }
      
-   // if (activeMatch!=null){
-     //  activeMatch.rotate(); 
-    //  }
-   //if (e.keyCode == KeyCode.SPACE) {
-      //    print('pressed space');
-   // }
-
- 
-  
-  }
-    
-  
-          
+  }         
 }
 
