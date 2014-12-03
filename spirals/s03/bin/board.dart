@@ -14,6 +14,9 @@ class Board {
   bool matchSelected=false;
   List matchTest=new List();
 
+
+  
+
   Board(this.canvas,this.lengthMatches,this.widthMatches) {
     context = canvas.getContext('2d');
     width = canvas.width;
@@ -27,9 +30,9 @@ class Board {
     querySelector('#coordinates_1').innerHtml="Coordonnnés dernier click:X=n/a , Y=n/a";
     querySelector('#canvas').onMouseMove.listen(onMouseMove);
     window.onKeyPress.listen( onKey);
-     
     window.animationFrame.then(gameLoop);
   }
+
   
   void gameLoop(num delta) {
     draw();
@@ -67,13 +70,18 @@ class Board {
     matchTest[1].draw(matchTest[1].posX,matchTest[1].posY); 
     matchTest[2].draw(matchTest[2].posX,matchTest[2].posY);
 
+   
+   
   }
+  
+
   
   void draw() {
     clear();
     border();
   }
-    
+  
+  
   void onMouseDown(MouseEvent e) {
     int y = e.offset.y;
     int x = e.offset.x;
@@ -104,20 +112,15 @@ class Board {
       
     }
   
+  
+    
   void onKey(KeyboardEvent e){
-   
-
-    
-    if (e.keyCode == KeyCode.SPACE) {
+      
+     if  ((activeMatch!=null)&&(e.keyCode == 32)) {
           print('pressed space');
+          activeMatch.rotate();
     }
-
-    if (activeMatch!=null){
-      activeMatch.rotate(); 
-     }
-  
-  }
-    
-  
+     
+  }         
 }
 
