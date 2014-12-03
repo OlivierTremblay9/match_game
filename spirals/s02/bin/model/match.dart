@@ -15,7 +15,6 @@ class Match{
       matchImage_H = document.querySelector('#match_horizontal');
   }
   
-  
   draw(int x, int y) {
     if (this.orientation=="vertical")
       board.context.drawImageToRect(matchImage_V, new Rectangle(x-width~/2, y+width~/2, width, lenght-width));

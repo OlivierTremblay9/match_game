@@ -27,11 +27,9 @@ class Board {
     querySelector('#coordinates_1').innerHtml="Coordonnnés dernier click:X=n/a , Y=n/a";
     querySelector('#canvas').onMouseMove.listen(onMouseMove);
     window.onKeyPress.listen( onKey);
-   
-    
+     
     window.animationFrame.then(gameLoop);
   }
-
   
   void gameLoop(num delta) {
     draw();
@@ -69,18 +67,13 @@ class Board {
     matchTest[1].draw(matchTest[1].posX,matchTest[1].posY); 
     matchTest[2].draw(matchTest[2].posX,matchTest[2].posY);
 
-   
-   
   }
-  
-
   
   void draw() {
     clear();
     border();
   }
-  
-  
+    
   void onMouseDown(MouseEvent e) {
     int y = e.offset.y;
     int x = e.offset.x;
