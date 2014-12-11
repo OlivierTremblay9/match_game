@@ -10,17 +10,19 @@ class Board {
   int height;
   int lengthMatches;
   int widthMatches;
+  int clearance;
   Match activeMatch=null;
   bool matchSelected=false;
-  List matchTest=new List();
-
+  Memory gameSpace;
+  List<Match>matchTest=new List();
 
   
 
-  Board(this.canvas,this.lengthMatches,this.widthMatches) {
+  Board(this.canvas,this.lengthMatches,this.widthMatches,this.clearance) {
     context = canvas.getContext('2d');
     width = canvas.width;
     height = canvas.height;
+    gameSpace=new Memory(this,3);
     matchTest.add(new Match(this, 25,25,lengthMatches,widthMatches,"vertical"));
     matchTest.add(new Match(this, 25,125,lengthMatches,widthMatches,"horizontal"));
     matchTest.add(new Match(this, 125,25,lengthMatches,widthMatches,"vertical"));
@@ -29,7 +31,7 @@ class Board {
     querySelector('#coordinates_0').innerHtml="Coordonnnés:X=n/a , Y=n/a";
     querySelector('#coordinates_1').innerHtml="Coordonnnés dernier click:X=n/a , Y=n/a";
     querySelector('#canvas').onMouseMove.listen(onMouseMove);
-    window.onKeyPress.listen( onKey);
+    window.onKeyDown.listen( onKeyDown); // Use onKeyDown instead of onKeyPress 
     window.animationFrame.then(gameLoop);
   }
 
@@ -52,11 +54,11 @@ class Board {
     context.fillStyle = grd;
     context.fill();
     // grid drawing 
-    for(int i=25;i<height;i+=(lengthMatches~/2)){
+    for(int i=clearance;i<height;i+=(lengthMatches~/2)){
       context.moveTo(0, i);  
       context.lineTo(650, i);
     }
-    for(int i=25;i<width;i+=(lengthMatches~/2)){
+    for(int i=clearance;i<width;i+=(lengthMatches~/2)){
           context.moveTo(i, 0);  
           context.lineTo(i, 350);
         }
@@ -114,8 +116,9 @@ class Board {
   
   
     
-  void onKey(KeyboardEvent e){
-      
+  void onKeyDown(KeyboardEvent e){
+    print(e.keyCode);  
+    
      if  ((activeMatch!=null)&&(e.keyCode == 32)) {
           print('pressed space');
           activeMatch.rotate();

@@ -105,12 +105,7 @@ class Board {
     }
   
   void onKey(KeyboardEvent e){
-   
-
-    
-    if (e.keyCode == KeyCode.SPACE) {
-          print('pressed space');
-    }
+ 
 
     if (activeMatch!=null){
       activeMatch.rotate(); 

@@ -2,6 +2,7 @@ part of mane;
 
 class Match{
   Board board;
+  List<Segment> SegUsed;
   num posX;
   num posY;
   int lenght;

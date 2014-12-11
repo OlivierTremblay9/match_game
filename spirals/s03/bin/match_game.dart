@@ -13,7 +13,7 @@ void main() {
   ButtonElement play = querySelector('#play');
   play.onClick.listen(playAgain);
   //Board(canvas,lengthMatches,widthMatches) 
-  new Board(canvas,100,10);
+  new Board(canvas,100,10,25);
 }
 
 playAgain(Event e) {
