@@ -153,20 +153,20 @@ class Board2 {
   int lengthMatches;
   int widthMatches;
   int clearance;
-  Match activeMatch=null;
-  Memory gameSpace;
-  int gameState;
+  Match2 activeMatch2=null;
+  Memory_second gameSpace2;
+  int gameState2;
 
   Board2(this.canvas2,this.lengthMatches,this.widthMatches,this.clearance,this.solve2) {
     context = canvas2.getContext('2d');
     width = canvas2.width;
     height = canvas2.height;
-    //gameSpace=new Memory(this);
-    //gameSpace.initGameStep(3);
+    gameSpace2=new Memory_second(this);
+    gameSpace2.initGameStep(3);
     
     querySelector('#canvas').onMouseDown.listen(onMouseDown);
     querySelector('#info_2').innerHtml="Coordonnnés:X=n/a , Y=n/a";
-   // querySelector('#info_3').innerHtml="Vous avez ${gameSpace.displacements} disponibles";
+    querySelector('#info_3').innerHtml="Vous avez ${gameSpace2.displacements2} disponibles";
     querySelector('#canvas2').onMouseMove.listen(onMouseMove);
     window.onKeyDown.listen( onKeyDown); // Use onKeyDown instead of onKeyPress 
     window.animationFrame.then(gameLoop);
@@ -198,13 +198,13 @@ class Board2 {
     }
     for(int i=clearance;i<width;i+=(lengthMatches~/2)){
           context.moveTo(i, 0);  
-          context.lineTo(i, 650);
+          context.lineTo(i, 450);
         }
     context.lineWidth = 1;
     context.strokeStyle = '#C3E8F7';
     context.stroke();
 
-    gameSpace.draw();
+    gameSpace2.draw();
    
    
   }
@@ -221,31 +221,31 @@ class Board2 {
     int x= e.offset.x;
     int y= e.offset.y;
     Segment nearest;
-    gameState=0;
-    String Message="Vous avez ${gameSpace.displacements} disponibles";
-    if (activeMatch==null){
-      activeMatch=gameSpace.verifyIfSelectedMatchclick(x,y);
+    gameState2=0;
+    String Message="Vous avez ${gameSpace2.displacements2} disponibles";
+    if (activeMatch2==null){
+      activeMatch2=gameSpace2.verifyIfSelectedMatch2click(x,y);
     }
     else{
-      nearest=gameSpace.nearestSegment(x, y);
-      if(gameSpace.moveMatch(activeMatch, nearest)==false) {
-        activeMatch.setPosDraw(activeMatch.posX,activeMatch.posY,activeMatch.orientation); 
+      nearest=gameSpace2.nearestSegment(x, y);
+      if(gameSpace2.moveMatch2(activeMatch2, nearest)==false) {
+        activeMatch2.setPosDraw(activeMatch2.posX2,activeMatch2.posY2,activeMatch2.orientation); 
       }        
       else{
-        if (gameSpace.displacements==0){
-            if (gameSpace.validate()==true){
+        if (gameSpace2.displacements2==0){
+            if (gameSpace2.validate2()==true){
               print('vous avez gagné!');
-              gameState =1;
+              gameState2 =1;
               Message='Vous avez gagné';
             }
             else{
               print('vous avez perdu!');
-              gameState=2;
+              gameState2=2;
               Message='Vous avez perdu';
             }
         }
       }  
-      activeMatch=null;
+      activeMatch2=null;
     }
     
     querySelector('#info_3').innerHtml=Message;
@@ -256,9 +256,9 @@ class Board2 {
       y = e.offset.y;
       x = e.offset.x;
       Segment nearest;
-      if (activeMatch!=null){
-        nearest=gameSpace.nearestSegment(x, y);
-        activeMatch.setPosDraw(nearest.x_0,nearest.y_0,nearest.orientation());
+      if (activeMatch2!=null){
+        nearest=gameSpace2.nearestSegment(x, y);
+        activeMatch2.setPosDraw(nearest.x_0,nearest.y_0,nearest.orientation());
       }
       querySelector('#info_2').innerHtml="Coordonnés: X= "+ x.toString() + ", Y=" + y.toString();
       
@@ -269,14 +269,14 @@ class Board2 {
   void onKeyDown(KeyboardEvent e){
     print(e.keyCode);  
     
-     if  ((activeMatch!=null)&&(e.keyCode == 32)) {
+     if  ((activeMatch2!=null)&&(e.keyCode == 32)) {
           print('pressed space');
-          activeMatch.rotate();
+          activeMatch2.rotate();
     }
      
   }
   
   void solveGame(Event e){
-    gameSpace.solve();
+    gameSpace2.solve();
   }
 }

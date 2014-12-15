@@ -18,11 +18,15 @@ void main() {
   ButtonElement solve = querySelector('#solve');
   ButtonElement solve2 = querySelector('#solve2');
   play.onClick.listen(playAgain);
+  play2.onClick.listen(play2Again);
   //Board(canvas,lengthMatches,widthMatches,clearance,Button) 
   new Board(canvas,100,10,25,solve);
   new Board2(canvas2,100,10,25,solve2);
 }
 
 playAgain(Event e) {
+  window.location.reload();
+}
+play2Again(Event e) {
   window.location.reload();
 }
