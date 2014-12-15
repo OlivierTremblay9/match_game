@@ -4,6 +4,7 @@ part of mane;
 class Board {
   CanvasElement canvas;
   CanvasRenderingContext2D context;
+  ButtonElement solve;
   int x = 0;
   int y = 0;
   int width;
@@ -12,27 +13,23 @@ class Board {
   int widthMatches;
   int clearance;
   Match activeMatch=null;
-  bool matchSelected=false;
   Memory gameSpace;
-  List<Match>matchTest=new List();
+  int gameState;
 
-  
-
-  Board(this.canvas,this.lengthMatches,this.widthMatches,this.clearance) {
+  Board(this.canvas,this.lengthMatches,this.widthMatches,this.clearance,this.solve) {
     context = canvas.getContext('2d');
     width = canvas.width;
     height = canvas.height;
-    gameSpace=new Memory(this,3);
-    matchTest.add(new Match(this, 25,25,lengthMatches,widthMatches,"vertical"));
-    matchTest.add(new Match(this, 25,125,lengthMatches,widthMatches,"horizontal"));
-    matchTest.add(new Match(this, 125,25,lengthMatches,widthMatches,"vertical"));
+    gameSpace=new Memory(this);
+    gameSpace.initGameStep(3);
     
     querySelector('#canvas').onMouseDown.listen(onMouseDown);
-    querySelector('#coordinates_0').innerHtml="Coordonnnés:X=n/a , Y=n/a";
-    querySelector('#coordinates_1').innerHtml="Coordonnnés dernier click:X=n/a , Y=n/a";
+    querySelector('#info_0').innerHtml="Coordonnnés:X=n/a , Y=n/a";
+    querySelector('#info_1').innerHtml="Vous avez ${gameSpace.displacements} disponibles";
     querySelector('#canvas').onMouseMove.listen(onMouseMove);
     window.onKeyDown.listen( onKeyDown); // Use onKeyDown instead of onKeyPress 
     window.animationFrame.then(gameLoop);
+    solve.onClick.listen(solveGame);
   }
 
   
@@ -65,13 +62,8 @@ class Board {
     context.lineWidth = 1;
     context.strokeStyle = '#C3E8F7';
     context.stroke();
-   // code for update coordinates on canvas test only to be removed from final code
 
-    // Display matches this code to be modified in future
-    matchTest[0].draw(matchTest[0].posX,matchTest[0].posY);
-    matchTest[1].draw(matchTest[1].posX,matchTest[1].posY); 
-    matchTest[2].draw(matchTest[2].posX,matchTest[2].posY);
-
+    gameSpace.draw();
    
    
   }
@@ -85,32 +77,49 @@ class Board {
   
   
   void onMouseDown(MouseEvent e) {
-    int y = e.offset.y;
-    int x = e.offset.x;
-    String textToDisplay="Aucun Allumette selectionné";
-    activeMatch=null;
-    //matchSelected=;
+    int x= e.offset.x;
+    int y= e.offset.y;
+    Segment nearest;
+    gameState=0;
+    String Message="Vous avez ${gameSpace.displacements} disponibles";
+    if (activeMatch==null){
+      activeMatch=gameSpace.verifyIfSelectedMatchclick(x,y);
+    }
+    else{
+      nearest=gameSpace.nearestSegment(x, y);
+      if(gameSpace.moveMatch(activeMatch, nearest)==false) {
+        activeMatch.setPosDraw(activeMatch.posX,activeMatch.posY,activeMatch.orientation); 
+      }        
+      else{
+        if (gameSpace.displacements==0){
+            if (gameSpace.validate()==true){
+              print('vous avez gagné!');
+              gameState =1;
+              Message='Vous avez gagné';
+            }
+            else{
+              print('vous avez perdu!');
+              gameState=2;
+              Message='Vous avez perdu';
+            }
+        }
+      }  
+      activeMatch=null;
+    }
     
-     for (int i=0; i< matchTest.length ;i++){
-            if (matchTest[i].intersects(x,y)==true){
-                activeMatch=matchTest[i];
-                textToDisplay="Allumette ${i+1} selectionné";
-            }      
-     }
-    
-    querySelector('#coordinates_1').innerHtml=textToDisplay;
+    querySelector('#info_1').innerHtml=Message;
    
   }
   
   void onMouseMove(MouseEvent e) {
       y = e.offset.y;
       x = e.offset.x;
-      
+      Segment nearest;
       if (activeMatch!=null){
-        activeMatch.posX=x;
-        activeMatch.posY=y;
+        nearest=gameSpace.nearestSegment(x, y);
+        activeMatch.setPosDraw(nearest.x_0,nearest.y_0,nearest.orientation());
       }
-      querySelector('#coordinates_0').innerHtml="Coordonnés: X= "+ x.toString() + ", Y=" + y.toString();
+      querySelector('#info_0').innerHtml="Coordonnés: X= "+ x.toString() + ", Y=" + y.toString();
       
     }
   
@@ -124,6 +133,10 @@ class Board {
           activeMatch.rotate();
     }
      
-  }         
+  }
+  
+  void solveGame(Event e){
+    gameSpace.solve();
+  }
 }
 
