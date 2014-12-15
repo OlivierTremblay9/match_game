@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Match game</title>
+    <link rel="stylesheet" href="match_game.css">
+  </head>
+  <body style='background-image:url(images/Background.png);'>
+    <div class="center-text-h">
+      <h1>Match_game</h1>
+    </div>
+      <h2>Directive:<p>
+      <h2> Bienvenu dans le jeu des allumettes. Les regles sont très simples, pour gagner vous devez soit enlever et/ou déplacer  une ou plusieurs allumette pour former le nombre de carré demandé à chaque question. </h2>
+       <h3>Jeu 1# - Former un "4" en déplaçant une seule allumette  :<p> 
+       <h5>Clique sur une allumete pour la selectioner et utiliser la sourie pour la déplacer. </h5>
+    <section>
+      <canvas id="canvas" width="650" height="350">
+      <img id ="match_vertical" src="images/match_vertical.png"></img>
+      <img id ="match_horizontal" src="images/match_horizontal.png"></img>      
+        Canvas is not supported in your browser.
+      </canvas>
+    </section>
+    <section>
+    <p id="info_0"></p>
+    <p id="info_1"></p>
+    </section>
+    <section>
+      <button id="play">Jouer à nouveau</button>
+      <button id="solve">Voir solution</button>
+    </section>
+       <h3>Jeu 2# - En bougeant 5 allumettes,formez 3 carrés de même taille.<p> 
+       <h5>Clique sur une allumete pour la selectioner et utiliser la sourie pour la déplacer. </h5>
+    <section>
+      <canvas id="canvas2" width="650" height="650">
+      <img id ="match_vertical" src="images/match_vertical.png"></img>
+      <img id ="match_horizontal" src="images/match_horizontal.png"></img>      
+        Canvas is not supported in your browser.
+      </canvas>
+    </section>
+    <section>
+    <p id="info_2"></p>
+    <p id="info_3"></p>
+    </section>
+    <section>
+      <button id="play2">Jouer à nouveau</button>
+      <button id="solve2">Voir solution</button>
+    </section>
+    <script type="application/dart" src="match_game.dart"></script>
+    <script src="packages/browser/dart.js"></script>
+  </body>
+</html>
