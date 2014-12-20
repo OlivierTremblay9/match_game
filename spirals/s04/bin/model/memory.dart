@@ -46,7 +46,7 @@ class Memory {
               matchesList.add(new Match(board, gridMatrix[1][0].x_0, gridMatrix[1][0].y_0, board.lengthMatches, board.widthMatches,gridMatrix[1][0].orientation(),gridMatrix[1][0],gridMatrix[3][0]));
               matchesList.add(new Match(board, gridMatrix[4][0].x_0, gridMatrix[4][0].y_0, board.lengthMatches, board.widthMatches,gridMatrix[4][0].orientation(),gridMatrix[4][0],gridMatrix[4][1]));
               matchesList.add(new Match(board, gridMatrix[1][2].x_0, gridMatrix[1][2].y_0, board.lengthMatches, board.widthMatches,gridMatrix[1][2].orientation(),gridMatrix[1][2],gridMatrix[3][2]));
-              
+              matchesList.add(new Match(board, gridMatrix[7][6].x_0, gridMatrix[7][6].y_0, board.lengthMatches, board.widthMatches,gridMatrix[7][6].orientation(),gridMatrix[7][6],gridMatrix[7][6]));
               //print('Match 1 placed at: ${gridMatrix[1][0].x_0}, ${gridMatrix[1][0].y_0}, ${gridMatrix[1][0].orientation()}');
               //print('Match 2 placed at: ${gridMatrix[4][0].x_0}, ${gridMatrix[4][0].y_0}, ${gridMatrix[4][0].orientation()}'); 
               //print('Match 3 placed at: ${gridMatrix[1][2].x_0}, ${gridMatrix[1][2].y_0}, ${gridMatrix[1][2].orientation()}');

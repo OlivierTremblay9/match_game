@@ -1,0 +1,7 @@
+name: Match_Game
+version: 0.0.1
+author: Olivier Tremblay & Catalina Vial Moscote
+description: Petit jeu pour le travail final en SIO-2109
+homepage: http://ondart.me/
+dependencies:
+  browser: any
