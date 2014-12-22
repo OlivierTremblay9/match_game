@@ -96,6 +96,7 @@ class Board {
               print('vous avez gagné!');
               gameState =1;
               Message='Vous avez gagné';
+              gameSpace.initGameStep(12);
             }
             else{
               print('vous avez perdu!');
