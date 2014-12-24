@@ -24,6 +24,8 @@ class Match{
       orientationDraw=orientation;
       used1.cellUsed=true;
       used2.cellUsed=true;
+      used1.match=this;
+      used2.match=this;
   }
   
 

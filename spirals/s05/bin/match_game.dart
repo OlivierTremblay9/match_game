@@ -8,6 +8,7 @@ part 'board.dart';
 part 'model/match.dart';
 part 'model/memory.dart';
 part 'model/segment.dart';
+part 'model/gameCtrl.dart';
 
 void main() {
   // Get a reference to the canvas.

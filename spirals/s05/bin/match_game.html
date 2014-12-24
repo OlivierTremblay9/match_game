@@ -3,17 +3,16 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Match game</title>
+    <title>Jeux des Allumettes</title>
     <link rel="stylesheet" href="match_game.css">
   </head>
   <body style='background-image:url(images/Background.png);'>
     <div class="center-text-h">
-      <h1>Match_game</h1>
+      <h1>Jeux des Allumettes</h1>
     </div>
-      <h2>Directive:<p>
-      <h2> Bienvenu dans le jeu des allumettes. Les regles sont très simples, pour gagner vous devez soit enlever et/ou déplacer  une ou plusieurs allumette pour former le nombre de carré demandé à chaque question. </h2>
-       <h3>Jeu 1# - Former un carré parfait en déplaçant une allumette  :<p> 
-       <h5>Clique sur une allumete pour la selectioner. </h5>
+      <h2>Bienvenu dans le jeu des allumettes. Les regles sont très simples, pour gagner vous devez soit enlever et/ou déplacer  une ou plusieurs allumettes. </h2>
+       <h3 id="step"></h3> 
+       <h5>Pour deplacer une allumette cliquez sur l'allumette pour la selectioner. Deplacez-la avec la souris, puis cliquez sur la position ou vous desirez placer l'allumette </h5>
     <section>
       <canvas id="canvas" width="650" height="450">
       <img id ="match_vertical" src="images/match_vertical.png"></img>
@@ -22,11 +21,11 @@
       </canvas>
     </section>
     <section>
-    <p id="info_0"></p>
     <p id="info_1"></p>
+    <p id="info_0"></p>
     </section>
     <section>
-      <button id="play">Jouer à nouveau</button>
+      <button id="play">Redémarrer</button>
       <button id="solve">Voir solution</button>
     </section>
     <script type="application/dart" src="match_game.dart"></script>
