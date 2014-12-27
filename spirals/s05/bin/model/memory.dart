@@ -63,11 +63,29 @@ class Memory {
               matchesList.add(new Match(board, gridMatrix[9][4].x_0, gridMatrix[9][4].y_0, board.lengthMatches, board.widthMatches,gridMatrix[9][4].orientation(),gridMatrix[9][4],gridMatrix[11][4]));
               matchesList.add(new Match(board, gridMatrix[13][4].x_0, gridMatrix[13][4].y_0, board.lengthMatches, board.widthMatches,gridMatrix[13][4].orientation(),gridMatrix[13][4],gridMatrix[15][4]));
               matchesList.add(new Match(board, gridMatrix[16][4].x_0, gridMatrix[16][4].y_0, board.lengthMatches, board.widthMatches,gridMatrix[16][4].orientation(),gridMatrix[16][4],gridMatrix[16][5]));
-              matchesList.add(new Match(board, gridMatrix[16][6].x_0, gridMatrix[16][6].y_0, board.lengthMatches, board.widthMatches,gridMatrix[16][6].orientation(),gridMatrix[16][6],gridMatrix[16][7]));
-     
+              matchesList.add(new Match(board, gridMatrix[16][6].x_0, gridMatrix[16][6].y_0, board.lengthMatches, board.widthMatches,gridMatrix[16][6].orientation(),gridMatrix[16][6],gridMatrix[16][7]));             
               
               break;
               
+      case 16:print('16 matches game');
+              displacements=1;
+              matchesList.add(new Match(board, gridMatrix[0][0].x_0, gridMatrix[0][0].y_0, board.lengthMatches, board.widthMatches,gridMatrix[0][0].orientation(),gridMatrix[0][0],gridMatrix[0][1]));
+              matchesList.add(new Match(board, gridMatrix[1][0].x_0, gridMatrix[1][0].y_0, board.lengthMatches, board.widthMatches,gridMatrix[1][0].orientation(),gridMatrix[1][0],gridMatrix[3][0]));
+              matchesList.add(new Match(board, gridMatrix[4][0].x_0, gridMatrix[4][0].y_0, board.lengthMatches, board.widthMatches,gridMatrix[4][0].orientation(),gridMatrix[4][0],gridMatrix[4][1]));
+              matchesList.add(new Match(board, gridMatrix[5][0].x_0, gridMatrix[5][0].y_0, board.lengthMatches, board.widthMatches,gridMatrix[5][0].orientation(),gridMatrix[5][0],gridMatrix[7][0]));
+              matchesList.add(new Match(board, gridMatrix[8][0].x_0, gridMatrix[8][0].y_0, board.lengthMatches, board.widthMatches,gridMatrix[8][0].orientation(),gridMatrix[8][0],gridMatrix[8][1]));
+              matchesList.add(new Match(board, gridMatrix[1][2].x_0, gridMatrix[1][2].y_0, board.lengthMatches, board.widthMatches,gridMatrix[1][2].orientation(),gridMatrix[1][2],gridMatrix[3][2]));
+              matchesList.add(new Match(board, gridMatrix[5][2].x_0, gridMatrix[5][2].y_0, board.lengthMatches, board.widthMatches,gridMatrix[5][2].orientation(),gridMatrix[5][2],gridMatrix[7][2]));
+              matchesList.add(new Match(board, gridMatrix[4][2].x_0, gridMatrix[4][2].y_0, board.lengthMatches, board.widthMatches,gridMatrix[4][2].orientation(),gridMatrix[4][2],gridMatrix[4][3]));
+              matchesList.add(new Match(board, gridMatrix[8][2].x_0, gridMatrix[8][2].y_0, board.lengthMatches, board.widthMatches,gridMatrix[8][2].orientation(),gridMatrix[8][2],gridMatrix[8][3]));
+              matchesList.add(new Match(board, gridMatrix[0][4].x_0, gridMatrix[0][4].y_0, board.lengthMatches, board.widthMatches,gridMatrix[0][4].orientation(),gridMatrix[0][4],gridMatrix[0][5]));
+              matchesList.add(new Match(board, gridMatrix[1][4].x_0, gridMatrix[1][4].y_0, board.lengthMatches, board.widthMatches,gridMatrix[1][4].orientation(),gridMatrix[1][4],gridMatrix[3][4]));
+              matchesList.add(new Match(board, gridMatrix[5][4].x_0, gridMatrix[5][4].y_0, board.lengthMatches, board.widthMatches,gridMatrix[5][4].orientation(),gridMatrix[5][4],gridMatrix[7][4]));
+              matchesList.add(new Match(board, gridMatrix[4][4].x_0, gridMatrix[4][4].y_0, board.lengthMatches, board.widthMatches,gridMatrix[4][4].orientation(),gridMatrix[4][4],gridMatrix[4][5]));
+              matchesList.add(new Match(board, gridMatrix[8][4].x_0, gridMatrix[8][4].y_0, board.lengthMatches, board.widthMatches,gridMatrix[8][4].orientation(),gridMatrix[8][4],gridMatrix[8][5]));
+              matchesList.add(new Match(board, gridMatrix[1][6].x_0, gridMatrix[1][6].y_0, board.lengthMatches, board.widthMatches,gridMatrix[1][6].orientation(),gridMatrix[1][6],gridMatrix[3][6]));
+              matchesList.add(new Match(board, gridMatrix[5][6].x_0, gridMatrix[5][6].y_0, board.lengthMatches, board.widthMatches,gridMatrix[5][6].orientation(),gridMatrix[5][6],gridMatrix[7][6]));
+              break;
     }
     
   }
@@ -151,12 +169,12 @@ class Memory {
     }
     switch (numberOfMatches){
       
-      case 3: print('3 matches game solution');
-                             matchesList.add(new Match(board, gridMatrix[1][0].x_0, gridMatrix[1][0].y_0, board.lengthMatches, board.widthMatches,gridMatrix[1][0].orientation(),gridMatrix[1][0],gridMatrix[3][0]));
-                             matchesList.add(new Match(board, gridMatrix[4][0].x_0, gridMatrix[4][0].y_0, board.lengthMatches, board.widthMatches,gridMatrix[4][0].orientation(),gridMatrix[4][0],gridMatrix[4][1]));
-                             matchesList.add(new Match(board, gridMatrix[3][1].x_0, gridMatrix[3][1].y_0, board.lengthMatches, board.widthMatches,gridMatrix[3][1].orientation(),gridMatrix[3][1],gridMatrix[5][1]));
+      case 3:      print('3 matches game solution');
+                   matchesList.add(new Match(board, gridMatrix[1][0].x_0, gridMatrix[1][0].y_0, board.lengthMatches, board.widthMatches,gridMatrix[1][0].orientation(),gridMatrix[1][0],gridMatrix[3][0]));
+                   matchesList.add(new Match(board, gridMatrix[4][0].x_0, gridMatrix[4][0].y_0, board.lengthMatches, board.widthMatches,gridMatrix[4][0].orientation(),gridMatrix[4][0],gridMatrix[4][1]));
+                   matchesList.add(new Match(board, gridMatrix[3][1].x_0, gridMatrix[3][1].y_0, board.lengthMatches, board.widthMatches,gridMatrix[3][1].orientation(),gridMatrix[3][1],gridMatrix[5][1]));
 
-                       break;
+                   break;
 
       case 12:      print('12 matches game solution');
         
@@ -172,9 +190,29 @@ class Memory {
                     matchesList.add(new Match(board, gridMatrix[5][8].x_0, gridMatrix[5][8].y_0, board.lengthMatches, board.widthMatches,gridMatrix[5][8].orientation(),gridMatrix[5][8],gridMatrix[7][8]));
                     matchesList.add(new Match(board, gridMatrix[12][4].x_0, gridMatrix[12][4].y_0, board.lengthMatches, board.widthMatches,gridMatrix[12][4].orientation(),gridMatrix[12][4],gridMatrix[12][5]));
                     matchesList.add(new Match(board, gridMatrix[0][4].x_0, gridMatrix[0][4].y_0, board.lengthMatches, board.widthMatches,gridMatrix[0][4].orientation(),gridMatrix[0][4],gridMatrix[0][5]));                                                                             
-                  break;
+                    break;
+                  
+      case 16:      print('16 matches game solution');
+                    matchesList.add(new Match(board, gridMatrix[0][0].x_0, gridMatrix[0][0].y_0, board.lengthMatches, board.widthMatches,gridMatrix[0][0].orientation(),gridMatrix[0][0],gridMatrix[0][1]));
+                    matchesList.add(new Match(board, gridMatrix[1][0].x_0, gridMatrix[1][0].y_0, board.lengthMatches, board.widthMatches,gridMatrix[1][0].orientation(),gridMatrix[1][0],gridMatrix[3][0]));
+                    matchesList.add(new Match(board, gridMatrix[4][0].x_0, gridMatrix[4][0].y_0, board.lengthMatches, board.widthMatches,gridMatrix[4][0].orientation(),gridMatrix[4][0],gridMatrix[4][1]));
+                    matchesList.add(new Match(board, gridMatrix[5][0].x_0, gridMatrix[5][0].y_0, board.lengthMatches, board.widthMatches,gridMatrix[5][0].orientation(),gridMatrix[5][0],gridMatrix[7][0]));
+                    matchesList.add(new Match(board, gridMatrix[8][0].x_0, gridMatrix[8][0].y_0, board.lengthMatches, board.widthMatches,gridMatrix[8][0].orientation(),gridMatrix[8][0],gridMatrix[8][1]));
+                    matchesList.add(new Match(board, gridMatrix[1][2].x_0, gridMatrix[1][2].y_0, board.lengthMatches, board.widthMatches,gridMatrix[1][2].orientation(),gridMatrix[1][2],gridMatrix[3][2]));
+                    matchesList.add(new Match(board, gridMatrix[5][2].x_0, gridMatrix[5][2].y_0, board.lengthMatches, board.widthMatches,gridMatrix[5][2].orientation(),gridMatrix[5][2],gridMatrix[7][2]));
+                    matchesList.add(new Match(board, gridMatrix[0][2].x_0, gridMatrix[0][2].y_0, board.lengthMatches, board.widthMatches,gridMatrix[0][2].orientation(),gridMatrix[0][2],gridMatrix[0][3]));
+                    matchesList.add(new Match(board, gridMatrix[8][2].x_0, gridMatrix[8][2].y_0, board.lengthMatches, board.widthMatches,gridMatrix[8][2].orientation(),gridMatrix[8][2],gridMatrix[8][3]));
+                    matchesList.add(new Match(board, gridMatrix[0][4].x_0, gridMatrix[0][4].y_0, board.lengthMatches, board.widthMatches,gridMatrix[0][4].orientation(),gridMatrix[0][4],gridMatrix[0][5]));
+                    matchesList.add(new Match(board, gridMatrix[1][4].x_0, gridMatrix[1][4].y_0, board.lengthMatches, board.widthMatches,gridMatrix[1][4].orientation(),gridMatrix[1][4],gridMatrix[3][4]));
+                    matchesList.add(new Match(board, gridMatrix[5][4].x_0, gridMatrix[5][4].y_0, board.lengthMatches, board.widthMatches,gridMatrix[5][4].orientation(),gridMatrix[5][4],gridMatrix[7][4]));
+                    matchesList.add(new Match(board, gridMatrix[4][4].x_0, gridMatrix[4][4].y_0, board.lengthMatches, board.widthMatches,gridMatrix[4][4].orientation(),gridMatrix[4][4],gridMatrix[4][5]));
+                    matchesList.add(new Match(board, gridMatrix[8][4].x_0, gridMatrix[8][4].y_0, board.lengthMatches, board.widthMatches,gridMatrix[8][4].orientation(),gridMatrix[8][4],gridMatrix[8][5]));
+                    matchesList.add(new Match(board, gridMatrix[1][6].x_0, gridMatrix[1][6].y_0, board.lengthMatches, board.widthMatches,gridMatrix[1][6].orientation(),gridMatrix[1][6],gridMatrix[3][6]));
+                    matchesList.add(new Match(board, gridMatrix[5][6].x_0, gridMatrix[5][6].y_0, board.lengthMatches, board.widthMatches,gridMatrix[5][6].orientation(),gridMatrix[5][6],gridMatrix[7][6]));
+                
+                break;
        
-        }
+    }
     
   }
   
@@ -209,6 +247,28 @@ class Memory {
                   valueToreturn=false; 
                 }
                 break;
+                
+      case 16:  if (  gridMatrix[0][0].cellUsed==true && gridMatrix[0][1].cellUsed==true &&
+                      gridMatrix[1][0].cellUsed==true && gridMatrix[3][0].cellUsed==true &&
+                      gridMatrix[4][0].cellUsed==true && gridMatrix[4][1].cellUsed==true &&
+                      gridMatrix[5][0].cellUsed==true && gridMatrix[7][0].cellUsed==true &&
+                      gridMatrix[8][0].cellUsed==true && gridMatrix[8][1].cellUsed==true &&
+                      gridMatrix[1][2].cellUsed==true && gridMatrix[3][2].cellUsed==true &&
+                      gridMatrix[5][2].cellUsed==true && gridMatrix[7][2].cellUsed==true &&
+                      gridMatrix[0][2].cellUsed==true && gridMatrix[0][3].cellUsed==true &&
+                      gridMatrix[8][2].cellUsed==true && gridMatrix[8][3].cellUsed==true &&
+                      gridMatrix[0][4].cellUsed==true && gridMatrix[0][5].cellUsed==true &&
+                      gridMatrix[1][4].cellUsed==true && gridMatrix[3][4].cellUsed==true &&
+                      gridMatrix[5][4].cellUsed==true && gridMatrix[7][4].cellUsed==true &&
+                      gridMatrix[4][4].cellUsed==true && gridMatrix[4][5].cellUsed==true &&
+                      gridMatrix[8][4].cellUsed==true && gridMatrix[8][5].cellUsed==true &&
+                      gridMatrix[1][6].cellUsed==true && gridMatrix[3][6].cellUsed==true &&
+                      gridMatrix[5][6].cellUsed==true && gridMatrix[7][6].cellUsed==true   ){
+                  valueToreturn=true;        
+                }
+                else{
+                  valueToreturn=false; 
+                }
         
     }
     

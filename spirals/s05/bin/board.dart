@@ -74,15 +74,15 @@ class Board {
   void draw() {
     clear();
     border();
-    if(gameCtrl.gameState==2 || gameCtrl.gameState==6){
+    if(gameCtrl.gameState==2 || gameCtrl.gameState==6 || gameCtrl.gameState==10){
       drawTextWin();
     }
     else{
-      if(gameCtrl.gameState==1 || gameCtrl.gameState==5){
+      if(gameCtrl.gameState==1 || gameCtrl.gameState==5 || gameCtrl.gameState==9){
           drawTextLoose();
       } 
       else{
-        if(gameCtrl.gameState==3 || gameCtrl.gameState==7){
+        if(gameCtrl.gameState==3 || gameCtrl.gameState==7 || gameCtrl.gameState==11){
           drawTextSolution();
         }
       }
@@ -94,19 +94,19 @@ class Board {
     
     context.font = "bold 14px sans-serif";
     context.fillStyle = "green";
-    context.fillText("Vous avez Gagné !! Cliquez Ici pour passer au suivante",125,225);    
+    context.fillText("Vous avez Gagné !! Cliquez Ici pour passer au suivante",125,400);    
   }
   
   drawTextLoose(){
     context.font = "bold 14px sans-serif";
     context.fillStyle = "red";
-    context.fillText("Vous avez perdu !! Cliquez Ici pour essayer à nouveau",125,225);
+    context.fillText("Vous avez perdu !! Cliquez Ici pour essayer à nouveau",125,400);
   }
   
   drawTextSolution(){
     context.font = "bold 14px sans-serif";
     context.fillStyle = "blue";
-    context.fillText("Voici la solution !! Cliquez Ici pour essayer de le faire",125,225);
+    context.fillText("Voici la solution !! Cliquez Ici pour essayer de le faire",125,400);
     
   }
   
@@ -116,7 +116,7 @@ class Board {
     Segment nearest;
     String Message="Vous avez ${gameCtrl.numOfMovesAvailables} mouvements disponibles";
     
-    if(gameCtrl.gameState==0 || gameCtrl.gameState==4){
+    if(gameCtrl.gameState==0 || gameCtrl.gameState==4 || gameCtrl.gameState==8){
       if (activeMatch==null){
             activeMatch=gameSpace.verifyIfSelectedMatchclick(x,y);
           }
@@ -135,16 +135,16 @@ class Board {
       gameCtrl.nextStep();
     }
     
-    if (gameCtrl.gameState==1 || gameCtrl.gameState==5){
+    if (gameCtrl.gameState==1 || gameCtrl.gameState==5 || gameCtrl.gameState==9){
         querySelector('#info_1').innerHtml= 'vous avez perdu';
     }
-    if(gameCtrl.gameState==2 || gameCtrl.gameState==6 ){
+    if(gameCtrl.gameState==2 || gameCtrl.gameState==6 || gameCtrl.gameState==10){
        querySelector('#info_1').innerHtml='vous avez gagné';
     }
-    if (gameCtrl.gameState==3 || gameCtrl.gameState==7 ){
+    if (gameCtrl.gameState==3 || gameCtrl.gameState==7 || gameCtrl.gameState==11){
         querySelector('#info_1').innerHtml='Solution Fourni !!';
     }
-    if (gameCtrl.gameState==0 || gameCtrl.gameState==4) {
+    if (gameCtrl.gameState==0 || gameCtrl.gameState==4 || gameCtrl.gameState==8) {
       querySelector('#info_1').innerHtml="Vous avez ${gameCtrl.numOfMovesAvailables} mouvements disponibles";
     }
     
@@ -152,7 +152,12 @@ class Board {
       querySelector('#step').innerHtml="Jeu 1: Formez un carré parfait en déplaçant 1 allumette";  
     }
     else{
-      querySelector('#step').innerHtml="Jeu 2: En bougeant 5 allumettes, formez 3 carrés de même taille";
+      if(gameCtrl.gameState<8){
+        querySelector('#step').innerHtml="Jeu 2: En bougeant 5 allumettes, formez 3 carrés de même taille";  
+      }
+      else{
+        querySelector('#step').innerHtml="Jeu 3: Bougez une seule allumette pour passer de 5 à 6 carrés.";
+      }
     }
     
  }  
