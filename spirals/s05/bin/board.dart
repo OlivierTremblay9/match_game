@@ -27,7 +27,7 @@ class Board {
     querySelector('#info_0').innerHtml="Coordonnnés:X=n/a , Y=n/a";
     querySelector('#info_1').innerHtml="Vous avez ${gameCtrl.numOfMovesAvailables} mouvements disponibles";
     querySelector('#canvas').onMouseMove.listen(onMouseMove);
-    querySelector('#step').innerHtml="Jeu 1: Formez un 4 en déplaçant 1 allumette";
+    querySelector('#step').innerHtml="Jeu 1: Formez un carré parfait en déplaçant une allumette";
     window.onKeyDown.listen( onKeyDown); // Use onKeyDown instead of onKeyPress 
     window.animationFrame.then(gameLoop);
     solve.onClick.listen(solveGame);
@@ -149,7 +149,7 @@ class Board {
     }
     
     if (gameCtrl.gameState<4){
-      querySelector('#step').innerHtml="Jeu 1: Formez un carré parfait en déplaçant 1 allumette";  
+      querySelector('#step').innerHtml="Jeu 1: Formez un carré parfait en déplaçant une allumette";  
     }
     else{
       if(gameCtrl.gameState<8){
